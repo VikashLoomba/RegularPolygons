@@ -1,0 +1,44 @@
+/*'~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+'Good effort.  Here are suggestions for improving:
+'1. Use JavaDoc comments through the program, not just at the top heading. 
+'2. Convert entries in text fields from strings to numbers. You get type mismatch run-time error otherwise.
+'3. Make the Calculate button default—pressing the Enter should fire it.
+'4. Correct the calculations—interior angle calculation is incorrect.
+'5. Follow Java's naming convention for class, methods, variables and constants.
+'6. Use final definitions for constants and use the Math class methods.
+'7. Consider making the Calculations class separate rather than nested.
+'8. It is good style to tab code inside each method.
+'9. Provide Calculate, Clear, and Quit buttons with accelerator keys.
+'10. Use System.exit(0); to exit program.
+'11. Set focus to the number of sides text field after Clear.
+'12. Change the tab index to indicate correct order of entry.
+'13. Name the project appropriately.
+'14. All input and output values should be double type except for number of sides (integer).
+'15. Clear should clear all text fields and reset the form to its original state.
+'16. Provide current date in the form's title.
+'17. Provide icon for all forms, including About.
+'18. Validate inputs for correct type and range.
+'19. Avoid excessive number of class variables-declare variables inside methods.
+'20. Clean up the empty procedures code.
+'21. Show the form centered as it starts.
+'22. Provide range and type check for inputs; do not allow, for example, negative number of sides.
+'23. Add menus to the form with meaningful choices.
+'24. Set Enabled property to False for all output text fields.
+'25. Disable form from maximization or resizing.
+'26. Provide ToolTip with meaningful message for the needed controls.
+'27. Display results with five decimal places--use DecimalFormat or NumberFormat class.
+'28. Give title to form.
+'29. Missing required calculations.
+'30. Missing meaningful menus without duplicating code,
+'31. Provide ability to print invoice.
+'32. Provide a meaningful About form.
+'33. Program crashes on no input or illegal input--place all code inside try block.
+'34. Use Decimal formatter to DecimalFormat formatter = new DecimalFormat("#,##0.########"); for displaying calculations.
+'35. Submit complete NetBeans projects in future--had to create one for you.
+'36. Print from menu is not functional--call the Print button event handler.
+'
+'The ones that apply to your project are:
+'1, 4, 6, 17, 20, 32, 36
+'
+'25+2=27/30 
+'~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/

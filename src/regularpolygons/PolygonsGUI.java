@@ -1,0 +1,742 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package regularpolygons;
+
+
+import java.text.DateFormat;
+import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.swing.*;
+
+/**
+ * Class: PolygonsGUI
+ * File Name: PolygonsGUI.java
+ * Description: Calculates values based off the number of sides (n) and length of each side (s)
+ * Environment:     PC, Windows 8.0, jdk1.8.0_25, NetBeans 8.0
+ * Date:            1/27/2015
+ * @see             javax.swing.JFrame
+ * @author          <i>Vikash Loomba</i>
+ * @version         1.0.0
+ */
+public class PolygonsGUI extends javax.swing.JFrame  {
+
+
+
+    /**
+     * Default constructor
+     * Creates new form PolygonsGUI
+     */
+    public PolygonsGUI() {
+        //Initialized Components
+        initComponents();
+        // Center the form
+        this.setLocationRelativeTo(null);
+                
+        //Set default button
+        this.getRootPane().setDefaultButton(calculateButton);
+        
+        //Set Date and format
+        DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+        Date setDate = new Date();
+        
+        //Set Title
+        setTitle("Regular Polygons - " + dateFormat.format(setDate));
+
+    }
+
+/**
+ * Class: Calculations
+ * Description: Contains individual methods to calculate the different values
+ * Environment:     PC, Windows 8.0, jdk1.8.0_25, NetBeans 8.0
+ * Date:            1/27/2015
+ * @author          <i>Vikash Loomba</i>
+ * @version         1.0.0
+ */
+    public class Calculations  {   
+//Class wide variables to use for all calculation methods    
+int n = Integer.parseInt(sidesTextField.getText());
+double s = Double.parseDouble(lengthTextField.getText());
+double globalPerimeter;
+double globalCircumRadius;
+double globalApothem;
+double globalCircumference;
+
+    /**
+     * Method calculates the interior angle
+     * @return result
+     */
+    private int interiorAngle() { 
+        int intAngle = ((n - 2) * (180 / n)); 
+        final int result = intAngle;
+        return result;
+    }
+            
+    /**
+     * Method calculates the circumradius
+     * @return globalCircumRadius
+     */
+    private double circumradius() {
+        double r = (s) / (2 * Math.sin(Math.PI / n));
+        globalCircumRadius = r;
+        final double globalCircumRadius = r;
+        return globalCircumRadius;
+    
+    }    
+    
+    /**
+     * Method calculates the apothem
+     * @return globalApothem
+     */
+    private double apothem() {
+        double a = (s) / (2 * Math.tan(Math.PI / n));
+        globalApothem = a;
+        final double globalApothem = a;
+        return globalApothem;
+        
+    }  
+    
+    /**
+     * Method calculates the perimeter
+     * @return globalPerimeter
+     */
+    private double perimeter() {
+        double p = n * s;
+        globalPerimeter = p;
+        final double globalPerimeter = p;
+        return globalPerimeter;
+    }    
+    
+    /**
+     * Method calculates the area
+     * @param double globalApothem
+     * @return result
+     */
+    private double area(double globalApothem) { //area method takes argument double a from apothem method (see above)
+        double area = .5 * n * s * globalApothem;
+        final double result = area;
+        return result;
+    }  
+    
+    /**
+     * Method calculates the area of the Circumcircle
+     * @param double globalCircumRadius
+     * @return result
+     */
+    private double areaCircumcircle(double globalCircumRadius){ //circumcirc method take argument double r from circumradius method (see above)
+        double areaCircumcircle = Math.PI * Math.pow(globalCircumRadius, 2);
+        final double result = areaCircumcircle;
+        return result;
+        
+    }    
+    /**
+     * Method calculates the circumference
+     * @param double globalCircumRadius
+     * @return globalCircumference
+     */
+    private double circumference(double globalCircumRadius){
+        double c = 2 * Math.PI * globalCircumRadius;
+        globalCircumference = c;
+        final double globalCircumference = c;
+        return globalCircumference;
+    }
+    /**
+     * Method calculates the percent error of perimeter
+     * @param double globalCircumference
+     * @param double globalPerimeter
+     * @return result
+     */
+    private double percentError(double globalCircumference, double globalPerimeter) { 
+        double error = ((Math.abs(globalCircumference - globalPerimeter) / globalCircumference) * 100);
+        final double result = error;
+        return result;
+    
+    }
+}
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        titlePanel = new javax.swing.JPanel();
+        iconLabel = new javax.swing.JLabel();
+        titleLabel = new javax.swing.JLabel();
+        bodyPanel = new javax.swing.JPanel();
+        sidesLabel = new javax.swing.JLabel();
+        sidesTextField = new javax.swing.JTextField();
+        lengthLabel = new javax.swing.JLabel();
+        lengthTextField = new javax.swing.JTextField();
+        angleLabel = new javax.swing.JLabel();
+        angleTextField = new javax.swing.JTextField();
+        radiusLabel = new javax.swing.JLabel();
+        radiusTextField = new javax.swing.JTextField();
+        apothemLabel = new javax.swing.JLabel();
+        apothemTextField = new javax.swing.JTextField();
+        perimeterLabel = new javax.swing.JLabel();
+        perimeterTextField = new javax.swing.JTextField();
+        areaLabel = new javax.swing.JLabel();
+        areaTextField = new javax.swing.JTextField();
+        areaCircumLabel = new javax.swing.JLabel();
+        areaCircumTextField = new javax.swing.JTextField();
+        circumLabel = new javax.swing.JLabel();
+        circumTextField = new javax.swing.JTextField();
+        percentErrorLabel = new javax.swing.JLabel();
+        percentErrorTextField = new javax.swing.JTextField();
+        buttonsPanel = new javax.swing.JPanel();
+        calculateButton = new javax.swing.JButton();
+        clearButton = new javax.swing.JButton();
+        printButton = new javax.swing.JButton();
+        exitButton = new javax.swing.JButton();
+        jMenuBar = new javax.swing.JMenuBar();
+        fileMenu = new javax.swing.JMenu();
+        clearMenuItem = new javax.swing.JMenuItem();
+        printMenuItem = new javax.swing.JMenuItem();
+        exitMenuItem = new javax.swing.JMenuItem();
+        actionMenu = new javax.swing.JMenu();
+        calculateMenuItem = new javax.swing.JMenuItem();
+        helpMenu = new javax.swing.JMenu();
+        aboutMenuItem = new javax.swing.JMenuItem();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(400, 600));
+        setResizable(false);
+
+        iconLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        iconLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/regularpolygons/icon.PNG"))); // NOI18N
+
+        titleLabel.setFont(new java.awt.Font("Tempus Sans ITC", 1, 18)); // NOI18N
+        titleLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        titleLabel.setText("Regular Polygons");
+
+        javax.swing.GroupLayout titlePanelLayout = new javax.swing.GroupLayout(titlePanel);
+        titlePanel.setLayout(titlePanelLayout);
+        titlePanelLayout.setHorizontalGroup(
+            titlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(titlePanelLayout.createSequentialGroup()
+                .addComponent(iconLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(titleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        titlePanelLayout.setVerticalGroup(
+            titlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(iconLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(titleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+
+        bodyPanel.setLayout(new java.awt.GridLayout(10, 2));
+
+        sidesLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        sidesLabel.setText("Number of sides: ");
+        bodyPanel.add(sidesLabel);
+
+        sidesTextField.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        sidesTextField.setToolTipText("<html>\n<h1>Enter a number that is greater than 2</h1>\n<p>Negative values and values less than 2 will not be accepted</p>\n</html>");
+        sidesTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sidesTextFieldActionPerformed(evt);
+            }
+        });
+        bodyPanel.add(sidesTextField);
+
+        lengthLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lengthLabel.setText("Length of each side: ");
+        bodyPanel.add(lengthLabel);
+
+        lengthTextField.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        lengthTextField.setToolTipText("<html>\n<h1>Enter a number that is greater than 1</h1>\n<p>Negative values and values less than 1 will not be accepted</p>\n</html>");
+        lengthTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lengthTextFieldActionPerformed(evt);
+            }
+        });
+        bodyPanel.add(lengthTextField);
+
+        angleLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        angleLabel.setText("Measure of interior angle: ");
+        bodyPanel.add(angleLabel);
+
+        angleTextField.setEditable(false);
+        angleTextField.setBackground(java.awt.SystemColor.info);
+        angleTextField.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        angleTextField.setFocusable(false);
+        angleTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                angleTextFieldActionPerformed(evt);
+            }
+        });
+        bodyPanel.add(angleTextField);
+
+        radiusLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        radiusLabel.setText("Circumradius: ");
+        bodyPanel.add(radiusLabel);
+
+        radiusTextField.setEditable(false);
+        radiusTextField.setBackground(java.awt.SystemColor.info);
+        radiusTextField.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        radiusTextField.setFocusable(false);
+        radiusTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radiusTextFieldActionPerformed(evt);
+            }
+        });
+        bodyPanel.add(radiusTextField);
+
+        apothemLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        apothemLabel.setText("Apothem: ");
+        bodyPanel.add(apothemLabel);
+
+        apothemTextField.setEditable(false);
+        apothemTextField.setBackground(java.awt.SystemColor.info);
+        apothemTextField.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        apothemTextField.setFocusable(false);
+        apothemTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                apothemTextFieldActionPerformed(evt);
+            }
+        });
+        bodyPanel.add(apothemTextField);
+
+        perimeterLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        perimeterLabel.setText("Perimeter of polygon: ");
+        bodyPanel.add(perimeterLabel);
+
+        perimeterTextField.setEditable(false);
+        perimeterTextField.setBackground(java.awt.SystemColor.info);
+        perimeterTextField.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        perimeterTextField.setFocusable(false);
+        perimeterTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                perimeterTextFieldActionPerformed(evt);
+            }
+        });
+        bodyPanel.add(perimeterTextField);
+
+        areaLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        areaLabel.setText("Area of polygon: ");
+        bodyPanel.add(areaLabel);
+
+        areaTextField.setEditable(false);
+        areaTextField.setBackground(java.awt.SystemColor.info);
+        areaTextField.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        areaTextField.setFocusable(false);
+        areaTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                areaTextFieldActionPerformed(evt);
+            }
+        });
+        bodyPanel.add(areaTextField);
+
+        areaCircumLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        areaCircumLabel.setText("Area of circumcircle: ");
+        bodyPanel.add(areaCircumLabel);
+
+        areaCircumTextField.setEditable(false);
+        areaCircumTextField.setBackground(java.awt.SystemColor.info);
+        areaCircumTextField.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        areaCircumTextField.setFocusable(false);
+        areaCircumTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                areaCircumTextFieldActionPerformed(evt);
+            }
+        });
+        bodyPanel.add(areaCircumTextField);
+
+        circumLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        circumLabel.setText("Circumference of circumcircle: ");
+        bodyPanel.add(circumLabel);
+
+        circumTextField.setEditable(false);
+        circumTextField.setBackground(java.awt.SystemColor.info);
+        circumTextField.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        circumTextField.setFocusable(false);
+        circumTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                circumTextFieldActionPerformed(evt);
+            }
+        });
+        bodyPanel.add(circumTextField);
+
+        percentErrorLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        percentErrorLabel.setText("% Error in perimeter");
+        bodyPanel.add(percentErrorLabel);
+
+        percentErrorTextField.setEditable(false);
+        percentErrorTextField.setBackground(java.awt.SystemColor.info);
+        percentErrorTextField.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        percentErrorTextField.setFocusable(false);
+        percentErrorTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                percentErrorTextFieldActionPerformed(evt);
+            }
+        });
+        bodyPanel.add(percentErrorTextField);
+
+        buttonsPanel.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                buttonsPanelFocusGained(evt);
+            }
+        });
+        buttonsPanel.setLayout(new java.awt.GridLayout(1, 4));
+
+        calculateButton.setText("Calculate");
+        calculateButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                calculateButtonActionPerformed(evt);
+            }
+        });
+        buttonsPanel.add(calculateButton);
+
+        clearButton.setText("Clear");
+        clearButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clearButtonActionPerformed(evt);
+            }
+        });
+        buttonsPanel.add(clearButton);
+
+        printButton.setText("Print");
+        printButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                printButtonActionPerformed(evt);
+            }
+        });
+        buttonsPanel.add(printButton);
+
+        exitButton.setText("Exit");
+        exitButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exitButtonActionPerformed(evt);
+            }
+        });
+        buttonsPanel.add(exitButton);
+
+        fileMenu.setText("File");
+
+        clearMenuItem.setText("Clear");
+        clearMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clearMenuItemActionPerformed(evt);
+            }
+        });
+        fileMenu.add(clearMenuItem);
+
+        printMenuItem.setText("Print");
+        fileMenu.add(printMenuItem);
+
+        exitMenuItem.setText("Exit");
+        exitMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exitMenuItemActionPerformed(evt);
+            }
+        });
+        fileMenu.add(exitMenuItem);
+
+        jMenuBar.add(fileMenu);
+
+        actionMenu.setText("Action");
+
+        calculateMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_ENTER, 0));
+        calculateMenuItem.setText("Calculate");
+        calculateMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                calculateMenuItemActionPerformed(evt);
+            }
+        });
+        actionMenu.add(calculateMenuItem);
+
+        jMenuBar.add(actionMenu);
+
+        helpMenu.setText("Help");
+
+        aboutMenuItem.setText("About");
+        aboutMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                aboutMenuItemActionPerformed(evt);
+            }
+        });
+        helpMenu.add(aboutMenuItem);
+
+        jMenuBar.add(helpMenu);
+
+        setJMenuBar(jMenuBar);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(buttonsPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(bodyPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(titlePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(56, 56, 56)
+                .addComponent(bodyPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 477, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(buttonsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addComponent(titlePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 522, Short.MAX_VALUE)))
+        );
+
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void sidesTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sidesTextFieldActionPerformed
+    // If enter key is pressed on this text field, run calculateButton
+        calculateButtonActionPerformed(evt);
+    }//GEN-LAST:event_sidesTextFieldActionPerformed
+
+    private void lengthTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lengthTextFieldActionPerformed
+    // If enter key is pressed on this text field, run calculateButton
+        calculateButtonActionPerformed(evt);
+    }//GEN-LAST:event_lengthTextFieldActionPerformed
+
+    private void angleTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_angleTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_angleTextFieldActionPerformed
+
+    private void radiusTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radiusTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_radiusTextFieldActionPerformed
+
+    private void apothemTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_apothemTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_apothemTextFieldActionPerformed
+
+    private void perimeterTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_perimeterTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_perimeterTextFieldActionPerformed
+
+    private void areaTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_areaTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_areaTextFieldActionPerformed
+
+    private void circumTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_circumTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_circumTextFieldActionPerformed
+
+    private void areaCircumTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_areaCircumTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_areaCircumTextFieldActionPerformed
+
+    private void percentErrorTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_percentErrorTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_percentErrorTextFieldActionPerformed
+
+    private void calculateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calculateButtonActionPerformed
+        try {
+            //Set variables, define the invalid inputs,and set decimal format
+            int numSides = Integer.parseInt(sidesTextField.getText());
+            double lengthSides = Double.parseDouble(lengthTextField.getText());
+            boolean invalidInputs = (numSides < 2 || lengthSides < 0 || lengthSides > 1000000 );
+            DecimalFormat setDecimal = new DecimalFormat("#,##0.########");
+            
+            //Checks for invalid inputs based on boolean rules
+            if (invalidInputs)
+                throw new NumberFormatException(); 
+            
+            else {
+                //Create instance of Calculations class in variable 'set'
+                Calculations set = new Calculations();
+                
+                //Calling method interiorAngle 
+                int interiorAngle = set.interiorAngle();     //Note: 'set.' is the Calculation class           
+                angleTextField.setText(setDecimal.format(interiorAngle)); //Display interior Angle in angleTextField
+                
+                //Calling method circumradius
+                double circumradius = set.circumradius();
+                radiusTextField.setText(setDecimal.format(circumradius));
+            
+                //Calling method apothem
+                double apothem = set.apothem();
+                apothemTextField.setText(setDecimal.format(apothem));
+                
+                //Calling method perimeter
+                double perimeter = set.perimeter();
+                perimeterTextField.setText(setDecimal.format(perimeter));
+                
+                //Calling method area
+                double area = set.area(apothem);
+                areaTextField.setText(setDecimal.format(area));
+                
+                //Calling method circumcircle
+                double areaCircumcircle = set.areaCircumcircle(circumradius);
+                areaCircumTextField.setText(setDecimal.format(areaCircumcircle));
+                
+                //Calling method circumCircumcircle
+                double circumference = set.circumference(circumradius);
+                circumTextField.setText(setDecimal.format(circumference));
+                
+                //Calling method percentError
+                double percentError = set.percentError(perimeter, circumference);
+                percentErrorTextField.setText(setDecimal.format(percentError));
+                
+                //Set focus to 'Clear' button to re calculate
+                clearButton.requestFocus();
+                }
+        }
+        catch(NumberFormatException nume)
+            {
+                JOptionPane.showMessageDialog(null, 
+                "Please enter a positive integer greater than 2 for number of sides, and positive integer for length of each side.",
+                "Input Error", JOptionPane.WARNING_MESSAGE);
+                sidesTextField.requestFocus();
+                sidesTextField.selectAll();
+            }
+        
+    }//GEN-LAST:event_calculateButtonActionPerformed
+
+    private void printButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printButtonActionPerformed
+        //Checks to see if the inputs are empty. If they are, it will throw an exception
+        try {
+            if (sidesTextField.getText().isEmpty()) {
+                throw new NumberFormatException();
+            } 
+            else
+            
+                PrintUtilities.printComponent(this);
+        }
+        catch(NumberFormatException nume) {
+        JOptionPane.showMessageDialog(null, 
+                "Please enter a positive integer greater than 2 for number of sides, and positive integer for length of each side.",
+                "Input Error", JOptionPane.WARNING_MESSAGE);
+                sidesTextField.requestFocus();
+                sidesTextField.selectAll();
+        }
+    }//GEN-LAST:event_printButtonActionPerformed
+
+    private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed
+        //Exit operation
+        System.exit(0);
+        
+    }//GEN-LAST:event_exitButtonActionPerformed
+
+    private void clearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearButtonActionPerformed
+        //Clear buttons, set focus to numsides text field
+        sidesTextField.setText("");
+        lengthTextField.setText("");
+        angleTextField.setText("");
+        radiusTextField.setText("");
+        apothemTextField.setText("");
+        perimeterTextField.setText("");
+        areaTextField.setText("");
+        areaCircumTextField.setText("");
+        circumTextField.setText("");
+        percentErrorTextField.setText("");
+    }//GEN-LAST:event_clearButtonActionPerformed
+
+    private void clearMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearMenuItemActionPerformed
+        // Call clear button
+        clearButtonActionPerformed(evt);
+        
+    }//GEN-LAST:event_clearMenuItemActionPerformed
+
+    private void exitMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuItemActionPerformed
+        // Call exit button
+        exitButtonActionPerformed(evt);
+    }//GEN-LAST:event_exitMenuItemActionPerformed
+
+    private void calculateMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calculateMenuItemActionPerformed
+        // Call calculate button
+        calculateButtonActionPerformed(evt);
+    }//GEN-LAST:event_calculateMenuItemActionPerformed
+
+    private void aboutMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutMenuItemActionPerformed
+        //Create About GUI Java Class
+        About polygonAbout = new About();
+        polygonAbout.setVisible(true);
+    }//GEN-LAST:event_aboutMenuItemActionPerformed
+
+    private void buttonsPanelFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_buttonsPanelFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonsPanelFocusGained
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(PolygonsGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(PolygonsGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(PolygonsGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(PolygonsGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+            
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new PolygonsGUI().setVisible(true);
+            }
+        });
+    }
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem aboutMenuItem;
+    private javax.swing.JMenu actionMenu;
+    private javax.swing.JLabel angleLabel;
+    private javax.swing.JTextField angleTextField;
+    private javax.swing.JLabel apothemLabel;
+    private javax.swing.JTextField apothemTextField;
+    private javax.swing.JLabel areaCircumLabel;
+    private javax.swing.JTextField areaCircumTextField;
+    private javax.swing.JLabel areaLabel;
+    private javax.swing.JTextField areaTextField;
+    private javax.swing.JPanel bodyPanel;
+    private javax.swing.JPanel buttonsPanel;
+    private javax.swing.JButton calculateButton;
+    private javax.swing.JMenuItem calculateMenuItem;
+    private javax.swing.JLabel circumLabel;
+    private javax.swing.JTextField circumTextField;
+    private javax.swing.JButton clearButton;
+    private javax.swing.JMenuItem clearMenuItem;
+    private javax.swing.JButton exitButton;
+    private javax.swing.JMenuItem exitMenuItem;
+    private javax.swing.JMenu fileMenu;
+    private javax.swing.JMenu helpMenu;
+    private javax.swing.JLabel iconLabel;
+    private javax.swing.JMenuBar jMenuBar;
+    private javax.swing.JLabel lengthLabel;
+    private javax.swing.JTextField lengthTextField;
+    private javax.swing.JLabel percentErrorLabel;
+    private javax.swing.JTextField percentErrorTextField;
+    private javax.swing.JLabel perimeterLabel;
+    private javax.swing.JTextField perimeterTextField;
+    private javax.swing.JButton printButton;
+    private javax.swing.JMenuItem printMenuItem;
+    private javax.swing.JLabel radiusLabel;
+    private javax.swing.JTextField radiusTextField;
+    private javax.swing.JLabel sidesLabel;
+    private javax.swing.JTextField sidesTextField;
+    private javax.swing.JLabel titleLabel;
+    private javax.swing.JPanel titlePanel;
+    // End of variables declaration//GEN-END:variables
+}
